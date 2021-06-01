@@ -89,7 +89,6 @@ async def bot_start(event):
             chat.id,
             start_msg,
             link_preview=False,
-            buttons=buttons,
             reply_to=reply_to,
         )
     except Exception as e:
