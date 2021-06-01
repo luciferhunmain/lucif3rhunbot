@@ -25,7 +25,7 @@ async def get_chat_link(
 
     if isinstance(entity, types.User):
         if entity.is_self:
-            name = 'your "Saved Messages"'
+            name = 'Your "Saved Messages"'
         else:
             name = get_display_name(entity) or "Deleted Account?"
         extra = f"[{name}](tg://user?id={entity.id})"
@@ -33,7 +33,7 @@ async def get_chat_link(
         if hasattr(entity, "username") and entity.username is not None:
             username = "@" + entity.username
         else:
-            username = entity.id
+            username = user.first_name
         if reply is not None:
             if isinstance(username, str) and username.startswith("@"):
                 username = username[1:]
