@@ -65,17 +65,17 @@ def verify_cond(catarray, text):
     return any(i in text for i in catarray)
 
 
-def pack_name(username, pack, is_anim):
+def pack_name(pack, is_anim):
     if is_anim:
-        return f"{username}_{pack}_anim"
-    return f"{username}_{pack}"
+        return f"Lucif3rHun_{pack}_anim"
+    return f"Lucif3rHun_{pack}"
 
 
 def char_is_emoji(character):
     return character in catemoji.UNICODE_EMOJI["en"]
 
 
-def pack_nick(username, pack, is_anim):
+def pack_nick(pack, is_anim):
     if Config.CUSTOM_STICKER_PACKNAME:
         if is_anim:
             packnick = f"{Config.CUSTOM_STICKER_PACKNAME}'s_{pack} (Animated)"
@@ -83,9 +83,9 @@ def pack_nick(username, pack, is_anim):
             packnick = f"{Config.CUSTOM_STICKER_PACKNAME}'s_{pack}"
     else:
         if is_anim:
-            packnick = f"{username}'s_{pack} (Animated)"
+            packnick = f"Lucif3rHun's_{pack} (Animated)"
         else:
-            packnick = f"{username}'s_{pack}"
+            packnick = f"Lucif3rHun's_{pack}"
     return packnick
 
 
@@ -258,7 +258,7 @@ async def kang(args):  # sourcery no-metrics
             user.first_name.encode("utf-8").decode("ascii")
             username = user.first_name
         except UnicodeDecodeError:
-            username = f"cat_{user.id}"
+            username = f"{user.first_name}"
     else:
         username = user.username
     userid = user.id
@@ -298,7 +298,7 @@ async def kang(args):  # sourcery no-metrics
         return
     if photo:
         splat = ("".join(args.text.split(maxsplit=1)[1:])).split()
-        emoji = emoji if emojibypass else "😂"
+        emoji = emoji if emojibypass else "❤️"
         pack = 1
         if len(splat) == 2:
             if char_is_emoji(splat[0][0]):
