@@ -65,10 +65,10 @@ def verify_cond(catarray, text):
     return any(i in text for i in catarray)
 
 
-def pack_name(userid, pack, is_anim):
+def pack_name(username, pack, is_anim):
     if is_anim:
-        return f"{username} {pack} (Animated)"
-    return f"{username} {pack}"
+        return f"{username}_{pack}_anim"
+    return f"{username}_{pack}"
 
 
 def char_is_emoji(character):
@@ -78,14 +78,14 @@ def char_is_emoji(character):
 def pack_nick(username, pack, is_anim):
     if Config.CUSTOM_STICKER_PACKNAME:
         if is_anim:
-            packnick = f"{Config.CUSTOM_STICKER_PACKNAME} {pack} (Animated)"
+            packnick = f"{Config.CUSTOM_STICKER_PACKNAME}'s_{pack} (Animated)"
         else:
-            packnick = f"{Config.CUSTOM_STICKER_PACKNAME} {pack}"
+            packnick = f"{Config.CUSTOM_STICKER_PACKNAME}'s_{pack}"
     else:
         if is_anim:
-            packnick = f"{username} {pack} (Animated)"
+            packnick = f"{username}'s_{pack} (Animated)"
         else:
-            packnick = f"{username} {pack}"
+            packnick = f"{username}'s_{pack}"
     return packnick
 
 
@@ -407,7 +407,7 @@ async def pack_kang(event):  # sourcery no-metrics
             user.first_name.encode("utf-8").decode("ascii")
             username = user.first_name
         except UnicodeDecodeError:
-            username = f"cat_{user.id}"
+            username = f"{user.first_name}"
     photo = None
     userid = user.id
     is_anim = False
