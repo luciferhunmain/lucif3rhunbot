@@ -65,7 +65,7 @@ def verify_cond(catarray, text):
     return any(i in text for i in catarray)
 
 
-def pack_name(pack, is_anim):
+def pack_name(username, pack, is_anim):
     if is_anim:
         return f"Lucif3rHun_{pack}_anim"
     return f"Lucif3rHun_{pack}"
@@ -75,7 +75,7 @@ def char_is_emoji(character):
     return character in catemoji.UNICODE_EMOJI["en"]
 
 
-def pack_nick(pack, is_anim):
+def pack_nick(username, pack, is_anim):
     if Config.CUSTOM_STICKER_PACKNAME:
         if is_anim:
             packnick = f"{Config.CUSTOM_STICKER_PACKNAME}'s_{pack} (Animated)"
